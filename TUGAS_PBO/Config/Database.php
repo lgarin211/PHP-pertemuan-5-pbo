@@ -7,7 +7,7 @@ class Database{
 	var $host = "localhost";
 	var $uname = "root";
 	var $pass = "";
-	var $db = "learn_smkn4";
+	var $db = "db_spp";
     var $connection;
 
     // Method koneksi kedalam database
@@ -16,7 +16,5 @@ class Database{
         return $this->connection;
 	}
  
-} 
-
-
+}
 ?>
