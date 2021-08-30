@@ -52,7 +52,7 @@ $GetSiswa = $siswa->GetData_All();
                 <td>
                     <a href="../Views/View_put_siswa.php?nisn=<?php echo $Get['nisn'] ?>">
                         <input type="submit" name="proses" value="View"></input></a>
-                    <a href="../Config/Routes.php?function=delete_siswa&nisn=<?php echo $Get['nisn'] ?>" onclick="konfirmasi(<?php echo $Get['nisn'] ?>)">
+                    <a href="../Config/Routes.php?function=delete_siswa&nisn=<?php echo $Get['nisn'] ?>" onclick="konfirmasi()">
                         <input type="submit" name="proses" value="Delete"></input></a>
                 </td>
             </tr>
@@ -62,7 +62,7 @@ $GetSiswa = $siswa->GetData_All();
     ?>
 </table>
 <script>
-    function konfirmasi(id) {
+    function konfirmasi() {
         return confirm('Apakah Anda yakin Ingin menghapus Data ini ?');
     }
 </script>

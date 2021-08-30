@@ -47,7 +47,7 @@ $GetPetugas = $petugas->GetData_All();
                 <td>
                     <a href="../Views/View_put_petugas.php?id_petugas=<?php echo $Get['id_petugas'] ?>">
                         <input type="submit" name="proses" value="View"></input></a>
-                    <a href="../Config/Routes.php?function=delete_petugas&id_petugas=<?php echo $Get['id_petugas'] ?>" onclick="konfirmasi(<?php echo $Get['id_petugas'] ?>)">
+                    <a href="../Config/Routes.php?function=delete_petugas&id_petugas=<?php echo $Get['id_petugas'] ?>" onclick="konfirmasi()">
                         <input type="submit" name="proses" value="Delete"></input></a>
                 </td>
             </tr>
@@ -57,7 +57,7 @@ $GetPetugas = $petugas->GetData_All();
     ?>
 </table>
 <script>
-    function konfirmasi(id) {
+    function konfirmasi() {
         return confirm('Apakah Anda yakin Ingin menghapus Data ini ?');
     }
 </script>
