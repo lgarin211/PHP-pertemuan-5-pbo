@@ -54,13 +54,21 @@ class Model_petugas{
         while($this->data=mysqli_fetch_array($this->query)){
             $this->result[]=$this->data;
         }
+        foreach ($this->result as $key => $value) {
+            foreach ($value as $key2 => $value2) {
+                if ($key2 == 'id_petugas') {
+                    $das=strval($value2);
+                    $this->result[$key][$key2] = base64_encode($das);
+                }
+            }
+        }
         return $this->result;
     }
 
 
     // Method untuk mengambil data seleksi dari table
     function GET_Where ($id_petugas){
-
+        $id_petugas=base64_decode($id_petugas);
         // perintah Get data
         $this->query=mysqli_query($this->con,"select * from petugas where id_petugas='$id_petugas'");
         while($this->data=mysqli_fetch_array($this->query)){

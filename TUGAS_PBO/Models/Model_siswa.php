@@ -55,6 +55,14 @@ class Model_siswa{
     while($this->data=mysqli_fetch_array($this->query)){
         $this->result[]=$this->data;
     }
+    foreach ($this->result as $key => $value) {
+        foreach ($value as $key2 => $value2) {
+            if ($key2 == 'nisn') {
+                $das=strval($value2);
+                $this->result[$key][$key2] = base64_encode($das);
+            }
+        }
+    }
     return $this->result;
 }
 
@@ -63,6 +71,7 @@ class Model_siswa{
 
     // Method untuk mengambil data seleksi dari table
     function GET_Where ($nisn){
+        $nisn=base64_decode($nisn);
 
         // perintah Get data
         $this->query=mysqli_query($this->con,"select siswa.*, kelas.nama_kelas, spp.nominal from siswa join kelas on siswa.id_kelas = kelas.id_kelas join spp on siswa.id_spp = spp.id_spp where nisn='$nisn'");

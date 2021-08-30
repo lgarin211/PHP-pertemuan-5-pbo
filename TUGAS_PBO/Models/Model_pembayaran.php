@@ -60,12 +60,21 @@ class Model_pembayaran{
         while($this->data=mysqli_fetch_array($this->query)){
             $this->result[]=$this->data;
         }
+        foreach ($this->result as $key => $value) {
+            foreach ($value as $key2 => $value2) {
+                if ($key2 == 'id_pembayaran') {
+                    $das=strval($value2);
+                    $this->result[$key][$key2] = base64_encode($das);
+                }
+            }
+        }
         return $this->result;
     }
 
 
     // Method untuk mengambil data seleksi dari table
     function GET_Where ($id_pembayaran){
+        $id_pembayaran=base64_decode($id_pembayaran);
 
         // perintah Get data
         $this->query=mysqli_query($this->con,"select pembayaran.*, petugas.nama_petugas, siswa.nama, spp.nominal from pembayaran join petugas on pembayaran.id_petugas = petugas.id_petugas join siswa on pembayaran.nisn = siswa.nisn join spp on pembayaran.id_spp = spp.id_spp where id_pembayaran='$id_pembayaran'");

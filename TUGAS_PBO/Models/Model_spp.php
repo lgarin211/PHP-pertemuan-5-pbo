@@ -50,6 +50,14 @@ class Model_spp{
         while($this->data=mysqli_fetch_array($this->query)){
             $this->result[]=$this->data;
         }
+        foreach ($this->result as $key => $value) {
+            foreach ($value as $key2 => $value2) {
+                if ($key2 == 'id_spp') {
+                    $das=strval($value2);
+                    $this->result[$key][$key2] = base64_encode($das);
+                }
+            }
+        }
         return $this->result;
     }
 

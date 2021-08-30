@@ -45,7 +45,7 @@ $GetKelas = $kelas->GetData_All();
                     <a href="../Views/View_put_kelas.php?id_kelas=<?php echo $Get['id_kelas'] ?>">
                         <input type="submit" name="proses" value="View"></input></a>
                     <a href="../Config/Routes.php?function=delete_kelas&id_kelas=<?php echo $Get['id_kelas'] ?>" 
-                    onclick="konfirmasi(<?php echo $Get['id_kelas'] ?>)"
+                    onclick="konfirmasi()"
                     >
                         <input type="submit" name="proses" value="Delete"></input>
                     </a>
@@ -59,7 +59,7 @@ $GetKelas = $kelas->GetData_All();
 <script>
     // var a = id_kelas;
 
-    function konfirmasi(id_kelas) {
+    function konfirmasi() {
         return confirm('Apakah Anda yakin Ingin menghapus Data ini ?');
     }
 </script>
